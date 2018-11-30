@@ -3,23 +3,33 @@
 
 #include <QMainWindow>
 #include <QSettings>
+#include <QCloseEvent>
+#include <QDataStream>
 
 namespace Ui {
   class MainWindow;
 }
 
 
-class Config
+class ConfigSettings
 {
 public:
+  ConfigSettings(){}
+  ~ConfigSettings(){}
+  ConfigSettings(const ConfigSettings &org){
+    page = org.page;
+  }
   int getPage() const { return page;}
   void savePage(int value) {page = value;}
+
+  friend QDataStream& operator<<(QDataStream& out, const ConfigSettings& v);
+  friend QDataStream& operator>>(QDataStream& in, ConfigSettings& v);
 
 private:
   int page;
 };
 
-Q_DECLARE_METATYPE(Config)
+
 
 class MainWindow : public QMainWindow
 {
@@ -30,13 +40,16 @@ public:
   ~MainWindow();
   void SaveSettings();
   void LoadSettings();
-
+  void CreateNaviButton();
+protected:
+  void closeEvent(QCloseEvent *event);
 public slots:
   void naviButtonClicked();
 
 private:
   Ui::MainWindow *ui;
-  Config config_;
+  ConfigSettings config_;
+    int page_;
 };
 
 #endif // MAINWINDOW_H
