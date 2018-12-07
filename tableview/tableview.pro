@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2018-11-28T17:03:57
+# Project created by QtCreator 2018-11-28T10:52:57
 #
 #-------------------------------------------------
 
@@ -8,7 +8,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = stacked_widget
+TARGET = tableview
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -24,21 +24,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 CONFIG += c++11
 
+INCLUDEPATH += ../stacked_widget
+
 SOURCES += \
         main.cpp \
-        mainwindow.cpp \
-    buttonlabel.cpp \
     cameratablewidget.cpp \
-    configrobotsensor.cpp
+    ../stacked_widget/configrobotsensor.cpp
 
 HEADERS += \
-        mainwindow.h \
-    buttonlabel.h \
     cameratablewidget.h \
-    configrobotsensor.h
+    ../stacked_widget/configrobotsensor.h
 
 FORMS += \
-        mainwindow.ui
+        widget.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

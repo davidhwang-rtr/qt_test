@@ -4,9 +4,6 @@
 #include <QWidget>
 #include <QTableWidgetItem>
 
-namespace Ui {
-  class Widget;
-}
 
 class CameraTableWidget : public QWidget
 {
@@ -22,7 +19,7 @@ public slots:
   void tableCellPressed(int row, int col);
   void CellButtonClicked();
 private:
-  Ui::Widget *ui;
+  QTableWidget  *tableWidget_Robot;
 };
 
 #endif // WIDGET_H

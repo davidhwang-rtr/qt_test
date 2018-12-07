@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2018-11-28T17:03:57
+# Project created by QtCreator 2018-11-28T14:42:55
 #
 #-------------------------------------------------
 
@@ -8,7 +8,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = stacked_widget
+TARGET = camera_setting_dialog
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -26,24 +26,15 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp \
-    buttonlabel.cpp \
-    cameratablewidget.cpp \
-    configrobotsensor.cpp
+        dialog.cpp
 
 HEADERS += \
-        mainwindow.h \
-    buttonlabel.h \
-    cameratablewidget.h \
-    configrobotsensor.h
+        dialog.h
 
 FORMS += \
-        mainwindow.ui
+        dialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
-
-RESOURCES += \
-    ../resource/resources.qrc

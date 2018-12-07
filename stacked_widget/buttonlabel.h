@@ -6,21 +6,27 @@
 #include <QWidget>
 #include <Qt>
 
+enum EventPassingType {PAGE_NAVIGATION, COMMAND_IN_PAGE, BEHAVIOR_IN_NAVIBAR};
+
 class ButtonLabel : public QLabel {
     Q_OBJECT
 
 public:
     explicit ButtonLabel(QWidget* parent = Q_NULLPTR, Qt::WindowFlags f = Qt::WindowFlags());
     ~ButtonLabel();
-
+    QString getDisplayName() const { return displayName_; }
+    EventPassingType getPassingType() const { return eventPassingType_; }
+    void setDisplayName(QString &name)  { displayName_ = name; }
+    void setPassingType(EventPassingType &evt) { eventPassingType_ = evt; }
 //  QSize sizeHint();
 
 signals:
-    void clicked();
+    void clicked(QString);
 
 protected:
     void mousePressEvent(QMouseEvent* event);
-
+    QString displayName_;
+    EventPassingType eventPassingType_;
 };
 
 //class ButtonIconLabel : public ButtonLabel

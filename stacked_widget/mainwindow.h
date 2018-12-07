@@ -2,32 +2,15 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QSettings>
+
 #include <QCloseEvent>
-#include <QDataStream>
+#include <QFrame>
+#include "cameratablewidget.h"
+#include "configrobotsensor.h"
 
 namespace Ui {
   class MainWindow;
 }
-
-
-class ConfigSettings
-{
-public:
-  ConfigSettings(){}
-  ~ConfigSettings(){}
-  ConfigSettings(const ConfigSettings &org){
-    page = org.page;
-  }
-  int getPage() const { return page;}
-  void savePage(int value) {page = value;}
-
-  friend QDataStream& operator<<(QDataStream& out, const ConfigSettings& v);
-  friend QDataStream& operator>>(QDataStream& in, ConfigSettings& v);
-
-private:
-  int page;
-};
 
 
 
@@ -38,18 +21,24 @@ class MainWindow : public QMainWindow
 public:
   explicit MainWindow(QWidget *parent = nullptr);
   ~MainWindow();
-  void SaveSettings();
-  void LoadSettings();
+
   void CreateNaviButton();
+  void SetupCameraUi(QWidget *);
 protected:
   void closeEvent(QCloseEvent *event);
 public slots:
-  void naviButtonClicked();
+  void naviButtonClicked(QString);
 
 private:
   Ui::MainWindow *ui;
   ConfigSettings config_;
-    int page_;
+  QMap<QString, QWidget *> page_map_; // object name - widget point
+
+  // navigation bar
+  QFrame *frame;
+
+  CameraTableWidget *cameraTableWidget_;
+
 };
 
 #endif // MAINWINDOW_H
