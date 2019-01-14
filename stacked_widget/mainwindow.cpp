@@ -29,7 +29,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
   ui->setupUi(this);
 
-  config_.LoadSettings();
+//  config_.LoadSettings();
 
   resize(MAINWINDOW_WIDTH, MAINWINDOW_HEIGHT);
 
@@ -43,7 +43,7 @@ MainWindow::MainWindow(QWidget *parent) :
   QWidget *widget;
   QLabel *label;
 
-  std::list<QString> page_names = {"Home", "Calibration", "Camera", "Robot", "Report"} ;
+  std::list<QString> page_names = {"Home", "Setting", "Calibration", "Report", "Exit"} ;
 
   std::list<QString>::iterator citr;
 
@@ -68,15 +68,13 @@ MainWindow::MainWindow(QWidget *parent) :
   //  label->setObjectName(QStringLiteral("label"));
   //  label->setGeometry(QRect(30, 20, 91, 17));
 
-  SetupCameraUi(page_map_["Camera"]);
+  SetupCameraUi(page_map_["Setting"]);
 //  SetupRobotUi(page_map_["Robot"]);
 
 
   //  connect(ui->pushButton_next,SIGNAL(clicked()), this,SLOT(naviButtonClicked()));
   //  connect(ui->pushButton_previous,SIGNAL(clicked()), this,SLOT(naviButtonClicked()));
 
-  // load previous page
-  ui->stackedWidget->setCurrentIndex(config_.getPage());
 }
 
 MainWindow::~MainWindow()
@@ -122,7 +120,7 @@ void MainWindow::CreateNaviButton()
 
   QLabel *label_5 = new ButtonLabel(frame);
   label_5->setObjectName(QStringLiteral("label_5"));
-  label_5->setText(page_map_["Robot"]->objectName());
+  label_5->setText(page_map_["Setting"]->objectName());
   horizontalLayout->addWidget(label_5);
   connect(label_5,SIGNAL(clicked(QString)), this,SLOT(naviButtonClicked(QString)));
 
@@ -131,7 +129,7 @@ void MainWindow::CreateNaviButton()
 
   QLabel*label_3 = new ButtonLabel(frame);
   label_3->setObjectName(QStringLiteral("label_3"));
-  label_3->setText(page_map_["Camera"]->objectName());
+  label_3->setText(page_map_["Exit"]->objectName());
   horizontalLayout->addWidget(label_3);
   connect(label_3,SIGNAL(clicked(QString)), this,SLOT(naviButtonClicked(QString)));
 
@@ -151,8 +149,7 @@ void MainWindow::naviButtonClicked(QString buttonName)
 //  ui->stackedWidget->setCurrentIndex(index);
 
     int index = ui->stackedWidget->currentIndex();
-  // qsettings saving current page in QVariant
-  config_.savePage(index);
+
 //  page_ = index;
   config_.SaveSettings(); // ToDo: signal slot of saving configurations
 }

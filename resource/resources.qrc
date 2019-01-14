@@ -3,8 +3,10 @@
         <file>cancel.png</file>
         <file>checkmark-2.png</file>
         <file>thumbsup.png</file>
+        <file>rtr_image/worldview.png</file>
+        <file>rtr_image/checker_board.png</file>
+        <file>rtr_image/realtime_robotics narrow.png</file>
+        <file>rtr_image/realtime_robotics_narrow_transparent.png</file>
     </qresource>
-    <qresource prefix="/images/icon">
-        <file>READY_ok.png</file>
-    </qresource>
+    <qresource prefix="/images/icon"/>
 </RCC>

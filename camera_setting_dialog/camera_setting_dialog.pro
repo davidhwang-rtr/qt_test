@@ -26,13 +26,13 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        dialog.cpp
+    repositiondialog.cpp
 
 HEADERS += \
-        dialog.h
+    repositiondialog.h
 
 FORMS += \
-        dialog.ui
+    repositiondialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

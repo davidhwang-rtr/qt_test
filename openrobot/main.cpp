@@ -1,0 +1,11 @@
+#include "openrobotdialog.h"
+#include <QApplication>
+
+int main(int argc, char *argv[])
+{
+    QApplication a(argc, argv);
+    OpenRobotDialog w;
+    w.show();
+
+    return a.exec();
+}
